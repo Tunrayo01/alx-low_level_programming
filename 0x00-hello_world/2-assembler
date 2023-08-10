@@ -1,2 +1,2 @@
 chmod u+x 
-gcc $CFILE -s
+gcc $CFILE -S
