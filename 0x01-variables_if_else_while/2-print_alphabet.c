@@ -1,14 +1,14 @@
 #include <stdio.h>
 
 /**
- * main - alphabet function
+ * main - print alphabet
  *
  * Return: always 0(success)
  */
 
 int main(void)
 {
-	 int k;
+	int k;
 
 	for (k = 'a'; k <= 'z'; k++)
 		putchar(k);
