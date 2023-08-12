@@ -15,7 +15,7 @@ int main(void)
 	{
 	while (y <= 9)
 	{
-		if (!(x > y) || x == y)
+		if (x > y || x != y)
 		{
 		putchar(x + '0');
 		putchar(y + '0');
