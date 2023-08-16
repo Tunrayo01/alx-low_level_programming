@@ -15,7 +15,7 @@ int main(void)
 	sum5 = 0;
 	sum = 0;
 
-	for (j = 0; j < 1024; ++j)
+	for (j = 0; j <= 1024; ++j)
 	{
 		if ((j % 3) == 0)
 		{
@@ -26,7 +26,7 @@ int main(void)
 		sum5 = sum5 + j;
 		}
 	}
-	sum = sum3 = sum5;
+	sum = sum3 + sum5;
 	printf("%lu\n", sum);
 	return (0);
 }
