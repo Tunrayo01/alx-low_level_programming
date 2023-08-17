@@ -1,28 +1,5 @@
 #include <stdio.h>
-
-/**
- *numLength - returns lenght of string
- *
- *@num: operand number
- *
- *Return: lengt of digits
- */
-
-int numLength(int num)
-{
-	int length = 0;
-
-	if (!num)
-	{
-	return (1);
-	}
-	while (num)
-	{
-		num = num / 10;
-		length += 1;
-	}
-	return (length);
-}
+#include <stdlib.h>
 
 /**
  * main - calculate the firste 98 fibonnaci numbers
@@ -32,33 +9,40 @@ int numLength(int num)
 
 int main(void)
 {
-	unsigned long f1 = 1, f2 = 2, tmp, mx = 100000000, f1o = 0, f2o = 0, tmpo = 0;
-	short int x = 1, initial0s;
+	int count;
+	unsigned long fb1 = 0, fb2 = 1, sum;
+	unsigned long fb1o, fb1i, fb2o, fb2i;
+	unsigned long h1, h2;
 
-	while (x <= 98)
+	for (count = 0; count < 92; count++)
 	{
-		if (f1o > 0)
-			printf("%lu ", f1o);
-		initial0s = numLength(mx) - 1 - numLength(f1);
-		while (f1o > 0 && initial0s > 0)
-		{
-			printf("%i", 0);
-			initial0s--;
-		}
-		printf("%lu", f1);
-
-		tmp = (f1 + f2) % mx;
-		tmpo = f1o + f2o + (f1 + f2) / mx;
-		f1 = f2;
-		f1o = f2o;
-		f2 = tmp;
-		f2o = tmpo;
-
-		if (x != 98)
-			printf(", ");
-		else
-			printf("\n");
-		x++;
+		sum = fb1 + fb2;
+		printf("%lu, ", sum);
+		fb1 = fb2;
+		fb2 = sum;
 	}
+	fb1o = fb1 / 10000000000;
+	fb1i = fb2 / 10000000000;
+	fb2o = fb1 % 10000000000;
+	fb2i = fb2 % 10000000000;
+
+	for (count = 93; count < 99; count++)
+	{
+		h1 = fb1o + fb2o;
+		h2 = fb1i + fb2i;
+		if (fb1i + fb2i > 9999999999)
+		{
+		h1 += 1;
+		h2 %= 10000000000;
+		}
+		printf("%lu%lu", h1, h2);
+		if (count != 98)
+			printf(", ");
+		fb1o = fb2o;
+		fb1i = fb2i;
+		fb2o = h1;
+		fb2i = h2;
+	}
+	printf("\n");
 	return (0);
 }
