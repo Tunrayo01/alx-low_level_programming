@@ -1,8 +1,12 @@
 #include <stdio.h>
+
+
 /**
- * numLenght - lenght of string
- * @num: operand number
- * Return: lengt of digits
+ *numLength - returns lenght of string
+ *
+ *@num: operand number
+ *
+ *Return: lengt of digits
  */
 
 int numLength(int num)
@@ -22,7 +26,7 @@ int numLength(int num)
 }
 
 /**
- * main - calculat the firste 98 fibonnaci numbers
+ * main - calculate the firste 98 fibonnaci numbers
  *
  * Return: always 0 (success)
  */
@@ -36,13 +40,14 @@ int main(void)
 	{
 		if (f1o > 0)
 			printf("%lu", f1o);
-		initial0s = numLength(mx) - 1 - numLenght(f1);
+		initial0s = numLength(mx) - 1 - numLength(f1);
 		while (f1o > 0 && initial0s > 0)
 		{
 			printf("%i", 0);
 			initial0s--;
 		}
 		printf("%lu", f1);
+		tmp = (f1 + f2) % mx;
 		tmp = f1o + f2o + (f1 + f2) / mx;
 		f1 = f2;
 		f1o = f2o;
