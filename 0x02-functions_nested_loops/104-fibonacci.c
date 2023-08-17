@@ -1,6 +1,5 @@
 #include <stdio.h>
 
-
 /**
  *numLength - returns lenght of string
  *
@@ -11,7 +10,7 @@
 
 int numLength(int num)
 {
-	int lenght = 0;
+	int length = 0;
 
 	if (!num)
 	{
@@ -20,9 +19,9 @@ int numLength(int num)
 	while (num)
 	{
 		num = num / 10;
-		lenght = lenght + 1;
+		length += 1;
 	}
-	return (lenght);
+	return (length);
 }
 
 /**
@@ -39,7 +38,7 @@ int main(void)
 	while (x <= 98)
 	{
 		if (f1o > 0)
-			printf("%lu", f1o);
+			printf("%lu ", f1o);
 		initial0s = numLength(mx) - 1 - numLength(f1);
 		while (f1o > 0 && initial0s > 0)
 		{
@@ -47,15 +46,16 @@ int main(void)
 			initial0s--;
 		}
 		printf("%lu", f1);
+
 		tmp = (f1 + f2) % mx;
-		tmp = f1o + f2o + (f1 + f2) / mx;
+		tmpo = f1o + f2o + (f1 + f2) / mx;
 		f1 = f2;
 		f1o = f2o;
 		f2 = tmp;
 		f2o = tmpo;
 
 		if (x != 98)
-			printf(",");
+			printf(", ");
 		else
 			printf("\n");
 		x++;
