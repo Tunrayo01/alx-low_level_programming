@@ -21,5 +21,5 @@ void more_numbers(void)
 			_putchar((b % 10) + '0');
 		}
 	_putchar('\n');
-	}		
+	}
 }
