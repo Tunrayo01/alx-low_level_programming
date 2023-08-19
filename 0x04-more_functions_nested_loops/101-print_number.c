@@ -12,8 +12,12 @@ void print_number(int n)
 
 	if (n < 0)
 	{
-		_putchar(45);
 		x = -x;
+		_putchar('-');
+	}
+	else
+	{
+		x = n;
 	}
 	if (x / 10)
 	{
