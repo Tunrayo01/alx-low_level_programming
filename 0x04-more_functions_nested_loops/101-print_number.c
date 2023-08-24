@@ -8,20 +8,39 @@
 
 void print_number(int n)
 {
-	unsigned int x;
+	 int x;
+	 int y = 0;
+	 int d = 1;
+	 unsigned int i = n;
+	 unsigned int j = n;
 
+	if (n == 0)
+	{
+		_putchar('0');
+	}
 	if (n < 0)
 	{
-		x = -x;
 		_putchar('-');
+		n = n + 1;
+		n = -n;
+		j = n;
+		i = n;
+		i += 1;
+		j += 1;
 	}
-	else
+	while (i != 0)
 	{
-		x = n;
+		i = i / 10;
+		y++;
 	}
-	if (x / 10)
+	for (x = 1; x < y; x++)
 	{
-		print_number(x / 10);
+		d *= 10;
 	}
-	_putchar((x % 10) + '0');
+	for (x = 0; x < y; x++)
+	{
+		_putchar(j / d + '0');
+		j = j % d;
+		d = d / 10;
+	}
 }
