@@ -4,55 +4,49 @@
 
 /**
  * print_all - function that prints anything
- * @c: character parameter
- * @i: integer parameter
- * @f: float parameter
+ * @...: the arguments to  print
+ * @format: the format string specifier
  * Return: Always 0(success)
  */
 
 void print_all(const char * const format, ...)
 {
 	va_list args;
-	va_start(args, format);
-
+	char *separator = "";
 	int i = 0;
 
-	while (format[i] != '\0')
-	{
-	switch (format[i])
-	{
-	case 'c':
-	{
-	char c = va_arg(args, int);
+	va_start(args, format);
 
-	printf("'%c'", c);
-	break;
-	}
-	case 'i':
+	while (format && format[i])
 	{
-	int n = va_arg(args, int);
+		switch (format[i])
+		{
+			case 'c':
+				printf("%s%c", separator, va_arg(args, int));
+				break;
+			case 'i':
+				printf("%s%d", separator, va_arg(args, int));
+				break;
+			case 'f':
+				printf("%s%f", separator, (float)va_arg(args, double));
+				break;
+			case 's':
+			{
+				char *str = va_arg(args, char *);
 
-	printf("%d", n);
-	break;
+				if (str == NULL)
+					printf("%s(nil)", separator);
+				else
+					printf("%s%s", separator, str);
+				break;
+			}
+		default:
+			i++;
+			continue;
+		}
+		separator = ", ";
+		i++;
 	}
-	case 'f':
-	{
-	double f = va_arg(args, double);
-
-	printf("%.2f", f);
-	break;
-	}
-	case 's':
-	{
-	char *str = va_arg(args, char *);
-	if (str == NULL)
-	{
-	printf("(nil)");
-        }
-	else
-	{
-	printf("%s", str);
-	}
-        break;
-	}	
+	va_end(args);
+	printf("\n");
 }
