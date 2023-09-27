@@ -8,24 +8,30 @@
 
 listint_t *find_listint_loop(listint_t *head)
 {
-	size_t length = 0;
-	int cont;
-	listint_t *temp;
+	listint_t *node1, *node2;
 
-	if (!h || !*h)
-		return (0);
-	while (*h)
+	if (!head)
+		return (NULL);
+	node1 = node2 = head;
+
+	while (node2 && node1 && node1->next)
 	{
-		cont = *h - (*h)->next;
-		if (cont > 0)
+		node2 = node2->next;
+		node1 = (node1->next)->next;
+
+		if (node1 == node2)
 		{
-		temp = (*h)->next;
-		free(*h);
-		*h = temp;
-		length++;
-		break;
+			node2 = head;
+
+			while (node2 && node1)
+			{
+				if (node2 == node1)
+					return (node2);
+
+				node2 = node2->next;
+				node1 = node1->next;
+			}
 		}
 	}
-	*h = NULL;
-	return (length);
+	return (NULL);
 }
